@@ -1,6 +1,6 @@
 package org.seleznyoviyu.klab.webflux.da.repository
 
-import org.seleznyoviyu.klab.webflux.da.supplier.ReactiveEntityProvider
+import org.seleznyoviyu.klab.webflux.da.provider.ReactiveEntityProvider
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
 import kotlin.random.Random

@@ -1,4 +1,4 @@
-package org.seleznyoviyu.klab.webflux.da.supplier
+package org.seleznyoviyu.klab.webflux.da.provider
 
 import org.seleznyoviyu.klab.webflux.da.entity.DocumentEntity
 import org.springframework.stereotype.Service

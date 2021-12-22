@@ -1,7 +1,7 @@
 package org.seleznyoviyu.klab.webflux.domain.service.simplestring
 
 import org.seleznyoviyu.klab.webflux.da.repository.ReactiveListRepository
-import org.seleznyoviyu.klab.webflux.da.supplier.RandomStringProvider
+import org.seleznyoviyu.klab.webflux.da.provider.RandomStringProvider
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 
