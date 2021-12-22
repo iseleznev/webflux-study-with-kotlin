@@ -1,16 +1,16 @@
 package org.seleznyoviyu.klab.webflux.domain.service.simplestring
 
 import org.seleznyoviyu.klab.webflux.da.repository.ReactiveListRepository
-import org.seleznyoviyu.klab.webflux.da.supplier.RandomStringSupplier
+import org.seleznyoviyu.klab.webflux.da.supplier.RandomStringProvider
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 
 @Service
 class SimpleStringRandomDelayedListGenerateService(
     private val repository: ReactiveListRepository,
-    private val supplier: RandomStringSupplier
+    private val stringProvider: RandomStringProvider
 ) {
     fun generate(): Flux<String> {
-        return repository.randomDelayedListAll(supplier)
+        return repository.randomDelayedListAll(stringProvider)
     }
 }

@@ -6,10 +6,10 @@ import org.springframework.util.StringUtils.capitalize
 import java.util.function.Supplier
 
 @Component
-class RandomStringSupplier(
+class RandomStringProvider(
     private val stringGenerateService: StringGenerateService
-) : Supplier<String> {
-    override fun get(): String {
+) : ReactiveEntityProvider<String> {
+    override fun provide(): String {
         return capitalize(stringGenerateService.generate())
     }
 }

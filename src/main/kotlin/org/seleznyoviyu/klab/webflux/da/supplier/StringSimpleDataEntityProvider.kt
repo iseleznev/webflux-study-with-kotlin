@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component
 import java.util.function.Supplier
 
 @Component
-class StringSimpleDataEntitySupplier(
+class StringSimpleDataEntityProvider(
     private val stringGenerateService: StringGenerateService
-) : Supplier<SimpleDataEntity<String>> {
-    override fun get(): SimpleDataEntity<String> {
+) : ReactiveEntityProvider<SimpleDataEntity<String>> {
+    override fun provide(): SimpleDataEntity<String> {
         return SimpleDataEntity(
             capitalize(stringGenerateService.generate())
         )

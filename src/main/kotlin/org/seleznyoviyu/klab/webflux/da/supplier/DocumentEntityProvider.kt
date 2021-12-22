@@ -10,12 +10,12 @@ import java.util.function.Supplier
 import kotlin.random.Random
 
 @Service
-class DocumentEntitySupplier(
+class DocumentEntityProvider(
     private val ulidGenerator: UlidGenerateByCreatorService,
     private val stringGenerateService: StringGenerateService,
     private val itemGenerator: MapGenerateService
-) : Supplier<DocumentEntity> {
-    override fun get(): DocumentEntity {
+) : ReactiveEntityProvider<DocumentEntity> {
+    override fun provide(): DocumentEntity {
         return DocumentEntity(
             ulid = ulidGenerator.generateUlid(),
             title = capitalize(
