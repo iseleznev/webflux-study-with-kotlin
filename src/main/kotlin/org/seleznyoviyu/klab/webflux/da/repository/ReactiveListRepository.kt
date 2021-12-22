@@ -1,18 +1,18 @@
 package org.seleznyoviyu.klab.webflux.da.repository
 
+import org.seleznyoviyu.klab.webflux.da.provider.ReactiveEntityProvider
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
-import java.util.function.Supplier
 import kotlin.random.Random
 
 @Component
 class ReactiveListRepository {
 
-    fun <T> listAllFromList(supplier: Supplier<List<T>>): Flux<T> {
-        return Flux.fromIterable(supplier.get())
+    fun <T> listAllFromList(provider: ReactiveEntityProvider<List<T>>): Flux<T> {
+        return Flux.fromIterable(provider.provide())
     }
 
-    fun <T> inDifferentThreadRunListAll(supplier: Supplier<T>): Flux<T> {
+    fun <T> inDifferentThreadRunListAll(provider: ReactiveEntityProvider<T>): Flux<T> {
         return Flux.create { sink ->
             Thread {
                 var count = 0
@@ -27,7 +27,7 @@ class ReactiveListRepository {
                     } catch (exception: Exception) {
                         sink.error(exception)
                     }
-                    sink.next(supplier.get()!!)
+                    sink.next(provider.provide()!!)
                     count++
                 }
                 sink.complete()
@@ -35,7 +35,7 @@ class ReactiveListRepository {
         }
     }
 
-    fun <T> randomDelayedListAll(supplier: Supplier<T>): Flux<T> {
+    fun <T> randomDelayedListAll(provider: ReactiveEntityProvider<T>): Flux<T> {
         return Flux.range(0, 20)
             .map {
                 try {
@@ -47,7 +47,7 @@ class ReactiveListRepository {
                 } catch (exception: Exception) {
                 }
 
-                supplier.get()
+                provider.provide()
             }
 
     }

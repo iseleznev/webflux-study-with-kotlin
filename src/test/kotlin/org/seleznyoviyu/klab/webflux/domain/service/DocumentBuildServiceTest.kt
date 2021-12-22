@@ -1,7 +1,7 @@
 package org.seleznyoviyu.klab.webflux.domain.service
 
 import org.junit.jupiter.api.Test
-import org.seleznyoviyu.klab.webflux.da.supplier.DocumentEntitySupplier
+import org.seleznyoviyu.klab.webflux.da.provider.DocumentEntityProvider
 import org.seleznyoviyu.klab.webflux.common.generate.MapGenerateService
 import org.seleznyoviyu.klab.webflux.common.generate.StringGenerateService
 import org.seleznyoviyu.klab.webflux.common.generate.UlidGenerateByCreatorService
@@ -11,7 +11,7 @@ internal class DocumentBuildServiceTest {
     @Test
     fun testGenerateDocument() {
         val stringGenerateService = StringGenerateService()
-        val actual = DocumentEntitySupplier(
+        val actual = DocumentEntityProvider(
             UlidGenerateByCreatorService(),
             stringGenerateService,
             MapGenerateService(stringGenerateService)

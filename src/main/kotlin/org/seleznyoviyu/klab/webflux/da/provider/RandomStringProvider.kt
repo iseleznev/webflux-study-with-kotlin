@@ -1,15 +1,14 @@
-package org.seleznyoviyu.klab.webflux.da.supplier
+package org.seleznyoviyu.klab.webflux.da.provider
 
 import org.seleznyoviyu.klab.webflux.common.generate.StringGenerateService
 import org.springframework.stereotype.Component
 import org.springframework.util.StringUtils.capitalize
-import java.util.function.Supplier
 
 @Component
-class RandomStringSupplier(
+class RandomStringProvider(
     private val stringGenerateService: StringGenerateService
-) : Supplier<String> {
-    override fun get(): String {
+) : ReactiveEntityProvider<String> {
+    override fun provide(): String {
         return capitalize(stringGenerateService.generate())
     }
 }
